@@ -1,13 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpeqtppim4jdo"]
 
 [ext_resource type="Script" uid="uid://bb6w3xyq8y36n" path="res://main.gd" id="1_ig7tw"]
-
-[sub_resource type="Resource" id="Resource_ig7tw"]
-metadata/__load_path__ = "res://player/player.tscn"
+[ext_resource type="PackedScene" uid="uid://rvaklxrqa5d3" path="res://player/player.tscn" id="2_0xm2m"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
-player = SubResource("Resource_ig7tw")
+player = ExtResource("2_0xm2m")
 
 [node name="GUI" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -24,6 +22,7 @@ y_sort_enabled = true
 position = Vector2(450, 300)
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://rvaklxrqa5d3")
 spawn_path = NodePath("../Players")
 
 [connection signal="pressed" from="GUI/HostButton" to="." method="create_server"]

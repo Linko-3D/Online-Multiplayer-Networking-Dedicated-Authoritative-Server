@@ -42,7 +42,6 @@ func create_client():
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(SERVER_IP, SERVER_PORT)
 	multiplayer.multiplayer_peer = peer
-
 	multiplayer.connected_to_server.connect(
 		func hide_GUI():
 			%GUI.hide()
