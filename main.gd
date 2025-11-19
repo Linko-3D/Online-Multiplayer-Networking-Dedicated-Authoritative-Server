@@ -20,13 +20,18 @@ func create_server():
 	var res = peer.create_server(SERVER_PORT)
 
 	if res == OK:
-		print("SERVER ONLINE\n")
+		print("DEDICATED SERVER IS RUNNING")
+		print("Waiting for players to connect...\n")
 		%HostButton.text = "SERVER ONLINE"
 		%HostButton.disabled = true
 	else:
-		print("CAN NOT CREATE SERVER. ERROR NUMBER: %d \n", res)
+		print(
+			"CAN NOT CREATE SERVER. ERROR %d: %s\n"
+			% [res, error_string(res)]
+		)
 
 	multiplayer.multiplayer_peer = peer
+
 
 	var map_instance = maps.pick_random().instantiate()
 	$Map.add_child(map_instance)
@@ -34,7 +39,7 @@ func create_server():
 	multiplayer.peer_connected.connect(
 		func(id):
 			print("%d has joined" % id)
-			print("Number of players: %d \n" % multiplayer.get_peers().size())
+			print("Number of players: %d\n" % multiplayer.get_peers().size())
 			var player_instance = player.instantiate()
 			player_instance.name = str(id)
 			
@@ -49,7 +54,7 @@ func create_server():
 	multiplayer.peer_disconnected.connect(
 		func(id):
 			print("%d has left" % id)
-			print("Number of players: %d \n" % multiplayer.get_peers().size())
+			print("Number of players: %d\n" % multiplayer.get_peers().size())
 			$Players.get_node(str(id)).queue_free()
 	)
 
