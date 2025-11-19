@@ -32,3 +32,10 @@ shape = SubResource("RectangleShape2D_qoodd")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(1122.535, 324)
 shape = SubResource("RectangleShape2D_qoodd")
+
+[node name="SpawnArea" type="ReferenceRect" parent="."]
+offset_left = 114.0
+offset_top = 114.0
+offset_right = 1038.0
+offset_bottom = 534.0
+mouse_filter = 2

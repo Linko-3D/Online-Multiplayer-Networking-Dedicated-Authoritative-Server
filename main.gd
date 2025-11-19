@@ -8,7 +8,7 @@ const SERVER_PORT = 9999
 @export var maps : Array[PackedScene]
 
 
-func _ready():	
+func _ready():
 	if OS.has_feature("dedicated_server"):
 		create_server()
 	else:
@@ -38,9 +38,10 @@ func create_server():
 			var player_instance = player.instantiate()
 			player_instance.name = str(id)
 			
-			var x = randi_range(0, $SpawnArea.size.x)
-			var y = randi_range(0, $SpawnArea.size.y)
-			player_instance.global_position = $SpawnArea.global_position + Vector2(x, y)
+			var spawn_area = get_tree().get_current_scene().find_child("SpawnArea", true, false)
+			var x = randi_range(0, spawn_area.size.x)
+			var y = randi_range(0, spawn_area.size.y)
+			player_instance.global_position = spawn_area.global_position + Vector2(x, y)
 
 			$Players.add_child(player_instance)
 	)
