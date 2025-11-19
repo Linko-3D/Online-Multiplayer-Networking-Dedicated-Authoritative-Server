@@ -5,7 +5,7 @@ var input_dir : Vector2
 
 
 func _ready():
-	set_visibility_for(1, true)
+	set_visibility_for(1, true) # Only the server gets the inputs
 
 
 func _physics_process(delta):

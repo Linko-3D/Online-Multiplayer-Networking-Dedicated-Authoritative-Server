@@ -29,7 +29,7 @@ func create_server():
 	multiplayer.multiplayer_peer = peer
 
 	var map_instance = maps.pick_random().instantiate()
-	%Map.add_child(map_instance)
+	$Map.add_child(map_instance)
 
 	multiplayer.peer_connected.connect(
 		func(id):
@@ -38,14 +38,14 @@ func create_server():
 			var player_instance = player.instantiate()
 			player_instance.name = str(id)
 			player_instance.global_position = $SpawnPosition.global_position
-			%Players.add_child(player_instance)
+			$Players.add_child(player_instance)
 	)
 
 	multiplayer.peer_disconnected.connect(
 		func(id):
 			print("%d has left" % id)
 			print("Number of players: %d \n" % multiplayer.get_peers().size())
-			%Players.get_node(str(id)).queue_free()
+			$Players.get_node(str(id)).queue_free()
 	)
 
 
@@ -56,5 +56,5 @@ func create_client():
 
 	multiplayer.connected_to_server.connect(
 		func hide_GUI():
-			%GUI.hide()
+		$GUI.hide()
 	)
