@@ -21,7 +21,7 @@ func create_server():
 
 	if res == OK:
 		print("DEDICATED SERVER IS RUNNING")
-		print("Waiting for players to connect...\n")
+		print("Waiting for players to join...\n")
 		%HostButton.text = "SERVER ONLINE"
 		%HostButton.disabled = true
 	else:
