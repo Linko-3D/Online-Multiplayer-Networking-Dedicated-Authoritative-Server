@@ -33,7 +33,7 @@ shape = SubResource("RectangleShape2D_bbd8t")
 position = Vector2(1122.535, 324)
 shape = SubResource("RectangleShape2D_bbd8t")
 
-[node name="SpawnArea" type="ReferenceRect" parent="."]
+[node name="SpawnArea" type="ReferenceRect" parent="." groups=["spawn_area"]]
 offset_left = 114.0
 offset_top = 114.0
 offset_right = 1038.0

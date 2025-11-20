@@ -43,7 +43,7 @@ func create_server():
 			var player_instance = player.instantiate()
 			player_instance.name = str(id)
 
-			var spawn_area = get_tree().get_current_scene().find_child("SpawnArea", true, false)
+			var spawn_area = get_tree().get_nodes_in_group("spawn_area").pick_random()
 			var x = randi_range(0, spawn_area.size.x)
 			var y = randi_range(0, spawn_area.size.y)
 			player_instance.global_position = spawn_area.global_position + Vector2(x, y)
