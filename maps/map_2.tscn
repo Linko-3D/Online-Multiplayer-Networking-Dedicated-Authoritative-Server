@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://csrxocrvt3041" path="res://maps/map_sprite.png" id="1_vffac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vffac"]
-size = Vector2(1150.75, 74.75)
+size = Vector2(1150.75, 74.1875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoodd"]
-size = Vector2(89.52634, 655)
+size = Vector2(72.64915, 655)
 
 [node name="Map2" type="Node2D"]
 
@@ -18,19 +18,19 @@ centered = false
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(566, 34.75)
+position = Vector2(566, 34.1875)
 shape = SubResource("RectangleShape2D_vffac")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575.75, 615.375)
+position = Vector2(575.75, 615.09375)
 shape = SubResource("RectangleShape2D_vffac")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(38.99124, 325.5)
+position = Vector2(32.114037, 325.5)
 shape = SubResource("RectangleShape2D_qoodd")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1116.7632, 326)
+position = Vector2(1118.3246, 326)
 shape = SubResource("RectangleShape2D_qoodd")
 
 [node name="SpawnArea" type="ReferenceRect" parent="." groups=["spawn_area"]]
