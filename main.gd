@@ -1,7 +1,7 @@
 extends Node
 
 
-const SERVER_IP = "localhost"
+const SERVER_IP = "localhost" # Replace it with the server’s DNS
 const SERVER_PORT = 9999
 
 @export var player : PackedScene
