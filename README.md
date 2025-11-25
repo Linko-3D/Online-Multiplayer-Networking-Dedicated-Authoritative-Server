@@ -6,5 +6,27 @@ A simple Godot multiplayer setup. Change the IP address to your cloud service an
 
 
 
-To host your game on Amazon Web Services (AWS) follow this tutorial: https://youtu.be/jgJuX04cq7k?si=SErVCXJjRM005\_U1\&t=604
+To host your game on Amazon Web Services (AWS) follow this tutorial:
+
+
+
+https://youtu.be/jgJuX04cq7k?si=SErVCXJjRM005\_U1\&t=604
+
+
+
+In the console go in your server folder where you have saved your dms file:
+
+
+
+cd "C:\\Users\\YOUR\_NAME\\Desktop\\server"
+
+
+
+Then type:
+
+
+
+ssh -i my-pc-keypair.pem ec2-user@COPY\_DNS\_HERE
+
+
 
