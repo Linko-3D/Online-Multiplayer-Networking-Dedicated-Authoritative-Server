@@ -9,6 +9,9 @@ func _ready():
 	$InputsToServer.set_multiplayer_authority(name.to_int())
 	set_physics_process(multiplayer.is_server())
 
+	if multiplayer.is_server():
+		$Sprite2D.modulate = Color.from_hsv(randf(), 0.5, 1.0)
+
 
 func _physics_process(delta):
 	var direction = $InputsToServer.input_dir
