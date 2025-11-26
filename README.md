@@ -56,7 +56,7 @@ Launch the server with this command:
 
 **Make it persistent**
 
-To make it persistent and make it always run even if you close the terminal or shutdown your computer. You must install tmux while being connected to your ec2 instance.
+To make it persistent and make it always run even if you close the terminal or shut down your computer you must install tmux while being connected to your EC2 instance.
 
 To install tmux:
 
@@ -76,10 +76,12 @@ Do the same command as before to launch the server:
 ./server/server.sh
 ```
 
-You can now close the console or shutdown your computer your game will still be running. You an also check if it is running by typing **exit** then **tmux ls**.
+You can now close the console or shut down your computer, and your game will still be running. You can also check if it is running by typing **exit** then **tmux ls**.
 
 To disconnect your server, go back to your tmux session if you had left it by typing this:
 
 ```bash
 tmux attach -t godotserver
 ```
+
+Then press **Ctrl + C** to disconnect the server.
