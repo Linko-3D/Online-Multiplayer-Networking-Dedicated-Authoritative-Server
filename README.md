@@ -1,7 +1,3 @@
-Here is the corrected version formatted cleanly in **Markdown**, without contractions and without dashes:
-
----
-
 # Simple Online Multiplayer Networking Authoritative Dedicated Server
 
 A simple Godot multiplayer setup. Change the IP address to your cloud service public DNS, then compile and upload it as a Linux headless version with debug. The clients will connect automatically to the server. The server has full authority; players can only send inputs in order to prevent cheating. The server is the only one able to see the players’ inputs. The server selects a random map, then selects a random node in the spawn area group, obtains its dimensions, and sets a random position for the client spawned inside it.
@@ -55,7 +51,3 @@ Launch the server with this command:
 ```bash
 ./server/server.sh
 ```
-
----
-
-If you want it exported as a downloadable `.md` file, I can generate it for you.
