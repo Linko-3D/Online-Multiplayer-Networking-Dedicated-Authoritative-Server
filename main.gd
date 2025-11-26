@@ -9,6 +9,9 @@ const SERVER_PORT = 8080
 
 
 func _ready():
+	if OS.has_feature("standalone"):
+		$Debug.queue_free()
+
 	if OS.has_feature("dedicated_server"):
 		create_server()
 	else:
@@ -68,5 +71,6 @@ func create_client():
 
 	multiplayer.server_disconnected.connect(func ():
 		%HostButton.show()
+		$ConnectLabel.text = "Connection lost — trying to reconnect…"
 		create_client()
 	)

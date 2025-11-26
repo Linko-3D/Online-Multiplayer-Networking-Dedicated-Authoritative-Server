@@ -10,13 +10,13 @@ script = ExtResource("1_ig7tw")
 player = ExtResource("2_0xm2m")
 maps = Array[PackedScene]([ExtResource("3_h2yge"), ExtResource("4_1bvp3")])
 
-[node name="WaitingLabel" type="Label" parent="."]
+[node name="StatusLabel" type="Label" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Waiting to connect..."
+text = "Trying to connect..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
