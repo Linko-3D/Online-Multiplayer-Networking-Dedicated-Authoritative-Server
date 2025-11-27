@@ -8,7 +8,13 @@ const SERVER_PORT = 8080
 @export var maps : Array[PackedScene]
 
 
+func _process(delta: float):
+	%Messages.scroll_vertical = INF
+
+
 func _ready():
+	$Chat.hide()
+
 	if OS.has_feature("release"):
 		$Debug.hide()
 
@@ -75,21 +81,23 @@ func create_client():
 	multiplayer.connected_to_server.connect(
 		func hide_GUI():
 		%HostButton.hide()
+		$Chat.show()
 	)
 
 	multiplayer.server_disconnected.connect(func ():
 		%HostButton.show()
 		$StatusLabel.text = "Connection lost — trying to reconnect…"
 		create_client()
+		$Chat.hide()
 	)
 
 
 func _on_send_message_text_submitted(new_text: String):
 	if %SendMessage.text != "":
-		rpc_id(1, "message", new_text)
+		rpc_id(1, "message", multiplayer.get_unique_id() , new_text)
 		%SendMessage.text = ""
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func message(msg: String):
-	%Messages.text += "\n" + msg
+func message(id : int, msg: String):
+	%Messages.text += str(id) + ": " + msg + "\n"
