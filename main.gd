@@ -98,5 +98,5 @@ func _on_send_message_text_submitted(new_text: String):
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func message(id : int, msg: String):
+func message(id: int, msg: String):
 	%Messages.text += str(id) + ": " + msg + "\n"
