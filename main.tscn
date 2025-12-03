@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5evxt5qada4t" path="res://maps/map_2.tscn" id="4_1bvp3"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1bvp3"]
-properties/0/path = NodePath("Chat/MarginContainer/VBoxContainer/Messages:text")
+properties/0/path = NodePath("Chat/Messages:text")
 properties/0/spawn = true
 properties/0/replication_mode = 2
 
@@ -38,33 +38,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Chat"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Chat/MarginContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Messages" type="RichTextLabel" parent="Chat/MarginContainer/VBoxContainer"]
+[node name="Messages" type="RichTextLabel" parent="Chat"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 160)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -80.0
+offset_right = 400.0
+offset_bottom = 80.0
+grow_vertical = 2
 bbcode_enabled = true
 scroll_active = false
 scroll_following = true
 
-[node name="SendMessage" type="LineEdit" parent="Chat/MarginContainer/VBoxContainer"]
+[node name="SendMessage" type="LineEdit" parent="Chat"]
 unique_name_in_owner = true
-layout_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.5
+offset_right = 200.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+placeholder_text = "Say"
 max_length = 80
 context_menu_enabled = false
 caret_blink = true
