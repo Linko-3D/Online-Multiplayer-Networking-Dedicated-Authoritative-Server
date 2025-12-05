@@ -74,11 +74,6 @@ max_length = 80
 context_menu_enabled = false
 caret_blink = true
 
-[node name="DisplayMessagesTimer" type="Timer" parent="Chat"]
-unique_name_in_owner = true
-wait_time = 5.0
-one_shot = true
-
 [node name="Debug" type="VBoxContainer" parent="."]
 offset_right = 101.0
 offset_bottom = 40.0
@@ -99,5 +94,4 @@ spawn_path = NodePath("../Map")
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_1bvp3")
 
-[connection signal="timeout" from="Chat/DisplayMessagesTimer" to="." method="_on_display_messages_timer_timeout"]
 [connection signal="pressed" from="Debug/HostButton" to="." method="create_server"]
