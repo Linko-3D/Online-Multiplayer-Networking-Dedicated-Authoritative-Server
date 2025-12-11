@@ -95,7 +95,7 @@ spawn_path = NodePath("../Map")
 replication_config = SubResource("SceneReplicationConfig_1bvp3")
 
 [node name="DIsplayMessagesTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [connection signal="pressed" from="Debug/HostButton" to="." method="create_server"]

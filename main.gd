@@ -12,14 +12,18 @@ func _input(event):
 	if event.is_action_pressed("enter"):
 		var message = %SendMessage.text.strip_edges()
 		if %SendMessage.visible:
+			$DIsplayMessagesTimer.start()
 			if message != "":
 				rpc_id(1, "message", multiplayer.get_unique_id() , message)
 				%SendMessage.release_focus()
 		else:
+			%Messages.show()
+			$DIsplayMessagesTimer.stop()
 			%SendMessage.grab_focus()
 
 		%SendMessage.text = ""
 		%SendMessage.visible = not %SendMessage.visible
+
 
 @rpc("any_peer", "call_remote", "reliable")
 func message(id: int, msg: String):
@@ -111,6 +115,7 @@ func create_client():
 func _on_messages_synchronizer_delta_synchronized() -> void:
 	%Messages.show()
 	$DIsplayMessagesTimer.start()
+
 
 func _on_d_isplay_messages_timer_timeout() -> void:
 	%Messages.hide()
