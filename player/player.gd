@@ -16,6 +16,11 @@ func _ready():
 
 
 func _physics_process(delta: float):
+	if $InputsToServer.shoot:
+		print("shooting")
+		var bullet_instance = bullet.instantiate()
+		get_tree().get_root().add_child(bullet_instance)
+	
 	$Sprite2D.look_at($Sprite2D.global_position + $InputsToServer.aim_vector)
 	
 	var direction = $InputsToServer.input_dir
