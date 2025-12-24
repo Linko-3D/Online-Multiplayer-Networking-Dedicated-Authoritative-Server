@@ -32,6 +32,7 @@ func message(id: int, msg: String):
 
 
 func _ready():
+	%SendMessage.modulate = Color.ORANGE
 	$Chat.hide()
 
 	if OS.has_feature("editor"):

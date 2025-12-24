@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bg6edawcpcn2a"]
+[gd_scene load_steps=4 format=3 uid="uid://bg6edawcpcn2a"]
 
 [ext_resource type="Texture2D" uid="uid://csrxocrvt3041" path="res://maps/map_sprite.png" id="1_p5fey"]
-[ext_resource type="PackedScene" uid="uid://be6pawkdmayqr" path="res://player/bullet.tscn" id="2_bbd8t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p5fey"]
 size = Vector2(1150.75, 70)
@@ -12,7 +11,7 @@ size = Vector2(69.99994, 655)
 [node name="Map1" type="Node2D"]
 
 [node name="Map" type="Sprite2D" parent="."]
-modulate = Color(1, 0.735357, 0.48452926, 1)
+modulate = Color(1, 0.7373294, 0.48452926, 1)
 texture = ExtResource("1_p5fey")
 centered = false
 
@@ -40,7 +39,3 @@ offset_top = 134.0
 offset_right = 1018.0
 offset_bottom = 514.0
 mouse_filter = 2
-
-[node name="Bullet" parent="." instance=ExtResource("2_bbd8t")]
-position = Vector2(212, 401)
-rotation = -0.5742133

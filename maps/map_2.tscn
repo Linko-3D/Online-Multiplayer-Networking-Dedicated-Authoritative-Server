@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5evxt5qada4t"]
+[gd_scene load_steps=4 format=3 uid="uid://c5evxt5qada4t"]
 
 [ext_resource type="Texture2D" uid="uid://csrxocrvt3041" path="res://maps/map_sprite.png" id="1_vffac"]
-[ext_resource type="PackedScene" uid="uid://be6pawkdmayqr" path="res://player/bullet.tscn" id="2_qoodd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vffac"]
 size = Vector2(1150.75, 70)
@@ -40,7 +39,3 @@ offset_top = 134.0
 offset_right = 1018.0
 offset_bottom = 514.0
 mouse_filter = 2
-
-[node name="Bullet" parent="." instance=ExtResource("2_qoodd")]
-position = Vector2(282, 414)
-rotation = -0.31066862

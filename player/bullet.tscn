@@ -10,12 +10,14 @@ properties/0/replication_mode = 2
 properties/1/path = NodePath(".:global_rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 2
+properties/2/path = NodePath(".:modulate")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_j40gx")
 
 [node name="Bullet" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 0, 1)
 texture = ExtResource("1_1y6ct")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://rvaklxrqa5d3"]
+[gd_scene load_steps=9 format=3 uid="uid://rvaklxrqa5d3"]
 
 [ext_resource type="Script" uid="uid://bvk1t7kkwds75" path="res://player/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://be6pawkdmayqr" path="res://player/bullet.tscn" id="2_yw30f"]
 [ext_resource type="Script" uid="uid://dx51x0l6uykfd" path="res://player/inputs_to_server.gd" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://dtiqolsc7hbtl" path="res://player/sprite.png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://cwgl5wsebbcjk" path="res://player/tank base.png" id="3_yw30f"]
+[ext_resource type="Texture2D" uid="uid://8rqn85wsyii6" path="res://player/tank top.png" id="5_qjkh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
 radius = 50.0
@@ -17,7 +18,7 @@ properties/1/spawn = true
 properties/1/replication_mode = 2
 properties/2/path = NodePath(".:shoot")
 properties/2/spawn = true
-properties/2/replication_mode = 2
+properties/2/replication_mode = 1
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_onrkg"]
 properties/0/path = NodePath(".:global_position")
@@ -26,9 +27,12 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("Sprite2D:global_rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
-properties/2/path = NodePath("Sprite2D:modulate")
+properties/2/path = NodePath("Top:global_rotation")
 properties/2/spawn = true
-properties/2/replication_mode = 0
+properties/2/replication_mode = 1
+properties/3/path = NodePath(".:modulate")
+properties/3/spawn = true
+properties/3/replication_mode = 1
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 0
@@ -39,16 +43,20 @@ bullet = ExtResource("2_yw30f")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_yw30f")
 
-[node name="Muzzle" type="Marker2D" parent="Sprite2D"]
-position = Vector2(60, 0)
-scale = Vector2(1.05, 1.05)
-
 [node name="DisplayControllerPlayer" type="Sprite2D" parent="Sprite2D"]
 unique_name_in_owner = true
 modulate = Color(0, 0, 0, 0.75000006)
 show_behind_parent = true
 scale = Vector2(1.05, 1.05)
 texture = ExtResource("3_yw30f")
+
+[node name="Top" type="Sprite2D" parent="."]
+texture = ExtResource("5_qjkh3")
+
+[node name="Muzzle" type="Marker2D" parent="Top"]
+unique_name_in_owner = true
+position = Vector2(60, 0)
+scale = Vector2(1.05, 1.05)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_g1dw6")
@@ -62,3 +70,8 @@ player = NodePath("..")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_onrkg")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
