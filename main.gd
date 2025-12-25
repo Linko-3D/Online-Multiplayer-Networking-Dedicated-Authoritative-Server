@@ -14,7 +14,7 @@ func _input(event):
 		if %SendMessage.visible:
 			$DIsplayMessagesTimer.start()
 			if message != "":
-				rpc_id(1, "message", multiplayer.get_unique_id() , message)
+				rpc_id(1, "message", message)
 				%SendMessage.release_focus()
 		else:
 			%Messages.show()
@@ -26,7 +26,8 @@ func _input(event):
 
 
 @rpc("any_peer", "call_remote", "reliable")
-func message(id: int, msg: String):
+func message(msg: String):
+	var id = multiplayer.get_remote_sender_id()
 	msg = msg.replace("[", "[ ").replace("]", " ]") # Prevent from using BBCode
 	%Messages.text += "[color=orange]%d: %s[/color]\n" % [id, msg]
 
