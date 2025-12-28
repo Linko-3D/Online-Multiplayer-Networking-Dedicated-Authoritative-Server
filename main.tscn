@@ -70,7 +70,7 @@ offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
 placeholder_text = "Say"
-max_length = 80
+max_length = 200
 context_menu_enabled = false
 caret_blink = true
 
