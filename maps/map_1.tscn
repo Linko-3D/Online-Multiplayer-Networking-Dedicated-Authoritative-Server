@@ -1,37 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://bg6edawcpcn2a"]
+[gd_scene load_steps=5 format=3 uid="uid://so0flt5l7li2"]
 
-[ext_resource type="Texture2D" uid="uid://csrxocrvt3041" path="res://maps/map_sprite.png" id="1_p5fey"]
+[ext_resource type="PackedScene" uid="uid://djxuj7ol64eg2" path="res://camera_iso.tscn" id="1_p5fey"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5fey"]
-size = Vector2(1150.75, 70)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p5fey"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bbd8t"]
-size = Vector2(69.99994, 655)
+[sub_resource type="Sky" id="Sky_bbd8t"]
+sky_material = SubResource("ProceduralSkyMaterial_p5fey")
 
-[node name="Map1" type="Node2D"]
+[sub_resource type="Environment" id="Environment_ae8pb"]
+background_mode = 2
+sky = SubResource("Sky_bbd8t")
+tonemap_mode = 2
+glow_enabled = true
 
-[node name="Map" type="Sprite2D" parent="."]
-modulate = Color(1, 0.7373294, 0.48452926, 1)
-texture = ExtResource("1_p5fey")
-centered = false
+[node name="Map1" type="Node3D"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ae8pb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(566, 35)
-shape = SubResource("RectangleShape2D_p5fey")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(575.75, 613)
-shape = SubResource("RectangleShape2D_p5fey")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(35, 325.5)
-shape = SubResource("RectangleShape2D_bbd8t")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1117, 326)
-shape = SubResource("RectangleShape2D_bbd8t")
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(10, 1, 10)
 
 [node name="SpawnArea" type="ReferenceRect" parent="." groups=["spawn_area"]]
 offset_left = 134.0
@@ -39,3 +33,5 @@ offset_top = 134.0
 offset_right = 1018.0
 offset_bottom = 514.0
 mouse_filter = 2
+
+[node name="CameraIso" parent="." instance=ExtResource("1_p5fey")]

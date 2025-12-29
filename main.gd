@@ -106,7 +106,8 @@ func create_client():
 	multiplayer.multiplayer_peer = peer
 
 	multiplayer.connected_to_server.connect(
-		func hide_GUI():
+		func update_GUI():
+		$StatusLabel.text = ""
 		%HostButton.hide()
 		$Chat.show()
 	)

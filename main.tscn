@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpeqtppim4jdo"]
+[gd_scene load_steps=5 format=3 uid="uid://cpeqtppim4jdo"]
 
 [ext_resource type="Script" uid="uid://bb6w3xyq8y36n" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://rvaklxrqa5d3" path="res://player/player.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://bg6edawcpcn2a" path="res://maps/map_1.tscn" id="3_h2yge"]
-[ext_resource type="PackedScene" uid="uid://c5evxt5qada4t" path="res://maps/map_2.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://so0flt5l7li2" path="res://maps/map_1.tscn" id="3_h2yge"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1bvp3"]
 properties/0/path = NodePath("Chat/Messages:text")
@@ -13,7 +12,7 @@ properties/0/replication_mode = 2
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
 player = ExtResource("2_0xm2m")
-maps = Array[PackedScene]([ExtResource("3_h2yge"), ExtResource("4_1bvp3")])
+maps = Array[PackedScene]([ExtResource("3_h2yge")])
 
 [node name="StatusLabel" type="Label" parent="."]
 anchors_preset = 15
@@ -25,10 +24,9 @@ text = "Trying to connect..."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Map" type="Node" parent="."]
 
-[node name="Players" type="Node2D" parent="."]
-y_sort_enabled = true
+[node name="Players" type="Node" parent="."]
 
 [node name="Chat" type="Control" parent="."]
 layout_mode = 3
@@ -88,7 +86,7 @@ _spawnable_scenes = PackedStringArray("uid://rvaklxrqa5d3")
 spawn_path = NodePath("../Players")
 
 [node name="MapSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bg6edawcpcn2a", "uid://c5evxt5qada4t")
+_spawnable_scenes = PackedStringArray("uid://so0flt5l7li2")
 spawn_path = NodePath("../Map")
 
 [node name="MessagesSynchronizer" type="MultiplayerSynchronizer" parent="."]
