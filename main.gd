@@ -34,11 +34,10 @@ func _input(event):
 func message(msg: String):
 	var id = multiplayer.get_remote_sender_id()
 	msg = msg.replace("[", "[ ").replace("]", " ]") # Prevent from using BBCode
-	%Messages.text += "[color=orange]%d: %s[/color]\n" % [id, msg]
+	%Messages.text += "%d: %s\n" % [id, msg]
 
 
 func _ready():
-	%SendMessage.modulate = Color.ORANGE
 	$Chat.hide()
 
 	if OS.has_feature("editor"):
@@ -67,6 +66,7 @@ func create_server():
 	print("DEDICATED SERVER IS RUNNING")
 	print("Waiting for players to join...\n")
 	%HostButton.text = "SERVER ONLINE"
+	$StatusLabel.text = ""
 	%HostButton.disabled = true
 
 	multiplayer.peer_connected.connect(
