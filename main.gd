@@ -14,7 +14,7 @@ func _input(event: InputEvent) -> void:
 		%SendMessage.text = ""
 		$DisplayMessagesTimer.start()
 
-	if event.is_action_pressed("enter"):
+	if event.is_action_pressed("enter") and $Chat.visible:
 		var message = %SendMessage.text.strip_edges()
 		if %SendMessage.visible:
 			$DisplayMessagesTimer.start()
@@ -37,8 +37,29 @@ func message(msg: String):
 	%Messages.text += "%d: %s\n" % [id, msg]
 
 
+func _on_enter_button_pressed() -> void:
+	rpc_id(1, "spawn_player")
+	%EnterButton.hide()
+
+
+@rpc("any_peer", "reliable")
+func spawn_player():
+	var id = multiplayer.get_remote_sender_id()
+	var player_instance = player.instantiate()
+	player_instance.name = str(id)
+
+	var spawn_area = get_tree().get_nodes_in_group("spawn_area").pick_random()
+	var x = randi_range(0, spawn_area.size.x)
+	var y = randi_range(0, spawn_area.size.y)
+	player_instance.global_position = spawn_area.global_position + Vector2(x, y)
+
+	$Players.add_child(player_instance, true)
+
+
+
 func _ready() -> void:
 	$Chat.hide()
+	%EnterButton.hide()
 
 	if OS.has_feature("editor"):
 		$Debug.show()
@@ -75,15 +96,7 @@ func create_server():
 			print("%d has joined" % id)
 			print("Number of players: %d\n" % multiplayer.get_peers().size())
 
-			var player_instance = player.instantiate()
-			player_instance.name = str(id)
 
-			var spawn_area = get_tree().get_nodes_in_group("spawn_area").pick_random()
-			var x = randi_range(0, spawn_area.size.x)
-			var y = randi_range(0, spawn_area.size.y)
-			player_instance.global_position = spawn_area.global_position + Vector2(x, y)
-
-			$Players.add_child(player_instance, true)
 	)
 
 	multiplayer.peer_disconnected.connect(
@@ -110,6 +123,7 @@ func create_client():
 		$StatusLabel.text = ""
 		%HostButton.hide()
 		$Chat.show()
+		%EnterButton.show()
 	)
 
 	multiplayer.server_disconnected.connect(func ():
