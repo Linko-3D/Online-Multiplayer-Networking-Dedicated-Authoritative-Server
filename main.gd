@@ -95,8 +95,6 @@ func create_server():
 			%Messages.text += "[color=green]" + str(id) + " has joined[/color]\n"
 			print("%d has joined" % id)
 			print("Number of players: %d\n" % multiplayer.get_peers().size())
-
-
 	)
 
 	multiplayer.peer_disconnected.connect(
