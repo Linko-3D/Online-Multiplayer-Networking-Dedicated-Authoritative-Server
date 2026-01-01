@@ -48,10 +48,11 @@ func spawn_player():
 	var player_instance = player.instantiate()
 	player_instance.name = str(id)
 
-	var spawn_area = get_tree().get_nodes_in_group("spawn_area").pick_random()
-	var x = randi_range(0, spawn_area.size.x)
-	var y = randi_range(0, spawn_area.size.y)
-	player_instance.global_position = spawn_area.global_position + Vector2(x, y)
+	if get_tree().get_nodes_in_group("spawn_area"):
+		var spawn_area = get_tree().get_nodes_in_group("spawn_area").pick_random()
+		var x = randi_range(0, spawn_area.size.x)
+		var y = randi_range(0, spawn_area.size.y)
+		player_instance.global_position = spawn_area.global_position + Vector2(x, y)
 
 	$Players.add_child(player_instance, true)
 
