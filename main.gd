@@ -59,7 +59,6 @@ func spawn_player():
 	$Players.add_child(player_instance, true)
 
 
-
 func _ready() -> void:
 	$Chat.hide()
 	$Menu.hide()

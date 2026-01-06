@@ -21,6 +21,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 text = "Trying to connect..."
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -50,6 +51,7 @@ offset_top = -80.0
 offset_right = 420.0
 offset_bottom = 80.0
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 bbcode_enabled = true
 scroll_active = false
 scroll_following = true
@@ -69,6 +71,7 @@ offset_right = 200.0
 offset_bottom = 15.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/outline_size = 5
 placeholder_text = "Say"
 max_length = 200
 context_menu_enabled = false
@@ -81,22 +84,8 @@ offset_bottom = 40.0
 [node name="HostButton" type="Button" parent="Debug"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 5
 text = "HOST GAME"
-
-[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://rvaklxrqa5d3")
-spawn_path = NodePath("../Players")
-
-[node name="MapSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://bg6edawcpcn2a", "uid://c5evxt5qada4t")
-spawn_path = NodePath("../Map")
-
-[node name="MessagesSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_1bvp3")
-
-[node name="DisplayMessagesTimer" type="Timer" parent="."]
-wait_time = 5.0
-one_shot = true
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -113,24 +102,43 @@ grow_vertical = 2
 
 [node name="SetName" type="LineEdit" parent="Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 placeholder_text = "Anonymous"
 
 [node name="EnterButton" type="Button" parent="Menu"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/outline_size = 5
 text = "Enter game"
 
 [node name="SpectateButton" type="Button" parent="Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 text = "Spectate"
 
 [node name="QuitButton" type="Button" parent="Menu"]
 layout_mode = 2
+theme_override_constants/outline_size = 5
 text = "Quit"
 
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://rvaklxrqa5d3")
+spawn_path = NodePath("../Players")
+
+[node name="MapSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bg6edawcpcn2a", "uid://c5evxt5qada4t")
+spawn_path = NodePath("../Map")
+
+[node name="MessagesSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_1bvp3")
+
+[node name="DisplayMessagesTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="pressed" from="Debug/HostButton" to="." method="create_server"]
-[connection signal="delta_synchronized" from="MessagesSynchronizer" to="." method="_on_messages_synchronizer_delta_synchronized"]
-[connection signal="timeout" from="DisplayMessagesTimer" to="." method="_on_d_isplay_messages_timer_timeout"]
 [connection signal="pressed" from="Menu/EnterButton" to="." method="_on_enter_button_pressed"]
 [connection signal="pressed" from="Menu/SpectateButton" to="." method="_on_spectate_button_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="delta_synchronized" from="MessagesSynchronizer" to="." method="_on_messages_synchronizer_delta_synchronized"]
+[connection signal="timeout" from="DisplayMessagesTimer" to="." method="_on_d_isplay_messages_timer_timeout"]
